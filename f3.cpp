@@ -43,8 +43,30 @@ string itc_rmFreeSpace(string str){
     return strcopy;
 }
 
-bool itc_isIp(string str){};
+long long itc_abs(long long num){
+    if (num >= 0) return num;
+    return -num;
+}
 
-string itc_DecToBin(string str){};
 
-string itc_decToBase(int num, int base){};
+double itc_pow(long long num, long long n){
+    if (n == 0) return 1;
+    long long res = num;
+    for (int i=1; i < itc_abs(n); i++){
+        res *= num;
+    }
+    if (n >= 0) return res;
+    return 1.0 / res;
+}
+
+bool itc_isIp(string str){
+    return false
+}
+
+string itc_DecToBin(string str){
+    return 0;
+    }
+
+string itc_decToBase(int num, int base){
+    return 0;
+    }

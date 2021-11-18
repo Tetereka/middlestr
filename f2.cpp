@@ -13,7 +13,7 @@ string itc_slice_str(string str, int n, int k){
 
 int itc_countWords(string str){
     if (str == "") return 0;
-    long long s = 0;
+    long long s = 1;
     for(long long i = 1; str[i] < '\0';  i++) {
         if (str[i] == ' ' && (str[i - 1] >= 'a' && str[i - 1] <= 'z' || str[i - 1] >= 'A' && str[i - 1] <= 'Z')) s += 1;
     }
