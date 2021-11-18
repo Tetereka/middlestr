@@ -1,20 +1,19 @@
-
 #include "middle_str.h"
 
 string itc_slice_str(string str, int n, int k){
+    string itog = "";
+    int rez = n;
     if (k < n) return str;
     else{
-            string itog = "";
-            if (end >= itc_len(str))
-                end = itc_len(str) - 1;
-            int rez = n;
-            for (rez; rez < k + 1; imp++)
-                itog += str[rez];
-            return itog;
+        if (k >= itc_len(str)) k = itc_len(str) - 1;
+        for (rez; rez < k + 1; rez++)
+            itog += str[rez];
+        return itog;
     }
 }
 
 int itc_countWords(string str){
+    if (str == "") return 0;
     long long s = 0;
     for(long long i = 1; str[i] < '\0';  i++) {
         if (str[i] == ' ' && (str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')) s += 1;
@@ -24,24 +23,42 @@ int itc_countWords(string str){
     return s;
 }
 
-string itc_maxCharWord(string str){}
+string itc_maxCharWord(string str){
+	if (itc_countWords(str) < 2) return "error";
+	string word1 = "";
+	string word2 = "";
+	int i = 0;
+	int sch = 0;
+	for (i, sch; str[i] != '\0'; i++)
+	{
+		if(!(str[i] == ' ' || str[i+1] != '\0') && !(str[i] == ',' || str[i] == '.' || str[i] == '!' || str[i] == '?'))
+            word1 += str[i];
+            sch++;
+		if (str[i] == ' ' || str[i + 1] == '\0'){
+			if (itc_len(word1) > itc_len(word2)){
+                word2 = word1;
+                word1 = "";
+                sch = 0;
+            }
+		}
+	}
+	return word2;
+}
 
 
-char itc_sameChar(string str){}
-
-bool itc_isFirstInSecond(string s1, string s2){
-    bool flag = false;
+char itc_sameChar(string str){
     long long i = 0;
-    for (i; s1[i] != '\0'; i++){
-        flag = false;
-        long long j = 0;
-        for (j; s2[j] != '\0'; j++){
-            if ( s1[i] == s2[j]){
-                s2 = itc_slice_str(s2, 0 , j-1) + itc_slice_str(s2, i+1, itc_len(s2));
-                flag = true;
+    for (i; str[i] != '\0'; i++){
+        if (( str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')){
+            long long j = 0;
+            for (j; str[j] != '\0'; j++)
+            {
+                if ( str[j] == str[i])
+                {
+                    return str[j];
+                }
             }
         }
-        if (flag) return true;
-    return true;
-
+    }
+    return 32;
 }
