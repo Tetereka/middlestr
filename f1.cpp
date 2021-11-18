@@ -10,25 +10,23 @@ long long itc_len(string str){
 }
 
 bool itc_isDigit(unsigned char c){
-    if (c >= 80 && c <= 89) return true;
+    int c1 = c;
+    if (c1 >= 48 && c1 <= 57) return true;
     return false;
 }
 
 unsigned char itc_toUpper(unsigned char c){
-    if (c >= 97 && c <= 122) return c - 32;
+    if (c >= 'a' && c <= 'z') return c - 32;
     return c;
 }
 
 unsigned char itc_changeCase(unsigned char c){
-    if (c >= 97 && c <= 122) return c - 32;
-    else if (c >= 65 && c <= 90) return c + 32;
-    else return c;
+    if (c >= 'a' && c <= 'z') return c - 32;
+    else if (c >= 'A' && c <= 'Z') return c + 32;
+    return c;
 }
 
 bool itc_compare(string s1, string s2){
-    long long i = 0;
-    for (i; i < itc_len(s1); i++) {
-        if (s1[i] != s2[i]) return false;
-    }
-    return true;
+    if (s1 == s2) return true;
+    return false;
 }

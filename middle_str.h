@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void test();
+
 long long itc_len(string str);
 bool itc_isDigit(unsigned char c);
 unsigned char itc_toUpper(unsigned char c);
