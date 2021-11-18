@@ -60,7 +60,7 @@ double itc_pow(long long num, long long n){
 }
 
 bool itc_isIp(string str){
-    return false
+    return false;
 }
 
 string itc_DecToBin(string str){
