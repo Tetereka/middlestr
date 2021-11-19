@@ -13,19 +13,22 @@ string itc_slice_str(string str, int n, int k){
 
 int itc_countWords(string str){
     if (str == "") return 0;
-    else str += " ";
-	bool flag = false;
-	int c = 0;
-	for (int i = 1; i < itc_len(str); i++) {
-		if (str[i] == ' ' && (str[i - 1] >= 'a' && str[i - 1] <= 'z' || str[i - 1] >= 'A' && str[i - 1] <= 'Z')) {
-            c += 1;
-		}
-		else {
-			if (!(str[i] >= 'a' && str[i] <= 'z' || str[i] >= 'A' && str[i] <= 'Z') || str[i] == ' ') flag = true;
-		}
-	}
-	return c + 1;
+    else
+        str += " ";
+        bool flag = true;
+        int kol = 0;
+        for (int i = 1; i < itc_len(str); i++) {
+            if ((str[i - 1] >= 'a' && str[i - 1] <= 'z' || str[i - 1] >= 'A' && str[i - 1] <= 'Z') && str[i] == ' ') {
+                if (flag) kol += 1;
+                flag = true;
+            }
+            else {
+                if (!(str[i] >= 'a' && str[i] <= 'z' || str[i] >= 'A' && str[i] <= 'Z')) flag = false;
+            }
+        }
+        return kol;
 }
+
 
 string itc_maxCharWord(string str){
     int counter = 0;

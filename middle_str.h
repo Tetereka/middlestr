@@ -8,6 +8,10 @@
 using namespace std;
 
 
+string itc_toString(long long num);
+long long itc_bin_num(long long number);
+long long itc_abs(long long num);
+double itc_pow(long long num, long long n);
 long long itc_len(string str);
 bool itc_isDigit(unsigned char c);
 unsigned char itc_toUpper(unsigned char c);

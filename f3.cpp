@@ -43,30 +43,53 @@ string itc_rmFreeSpace(string str){
     return strcopy;
 }
 
-long long itc_abs(long long num){
-    if (num >= 0) return num;
-    return -num;
-}
-
-
-double itc_pow(long long num, long long n){
-    if (n == 0) return 1;
-    long long res = num;
-    for (int i=1; i < itc_abs(n); i++){
-        res *= num;
-    }
-    if (n >= 0) return res;
-    return 1.0 / res;
-}
 
 bool itc_isIp(string str){
+    int i = 0, c = 0, dotpos = 0, ip = 0, news = 0;
+    string num;
+    while (str[i] != '\0'){
+       if (str[i] == '.'){
+            num = itc_slice_str(str, dotpos, i - 1);
+            dotpos = i + 1;
+            c += 1;
+            for (int i = 0; i < itc_len(num); i++){
+                if (!itc_isDigit(num[i])) return false;
+                ip += (num[i] - 48) * itc_pow(10, itc_len(num) - i - 1);
+            }
+            if (ip < 0 || ip > 255) return false;
+            ip = 0;
+       }
+       i += 1;
+    }
+    num = itc_slice_str(str, dotpos, i - 1);
+    dotpos = i + 1;
+    c += 1;
+    for (int i = 0; i < itc_len(num); i++){
+        if (itc_isDigit(num[i]) == false) return false;
+        ip += (num[i] - 48) * itc_pow(10, itc_len(num) - i - 1);
+    }
+    if (ip < 0 || ip > 255) return false;
+    if (c == 4) return true;
     return false;
 }
 
+
+
 string itc_DecToBin(string str){
-    return "a";
-    }
+    return "0";
+
+}
 
 string itc_decToBase(int num, int base){
-    return "a";
+    string neww = "";
+    string result = "";
+    while(num > 0){
+        if(num % base >= 10) neww += ((num % base) % 10) + 'A';
+        else neww += (num % base) + '0';
+        num /= base;
     }
+    for(long i = itc_len(neww) - 1; i >= 0; i--){
+        result += neww[i];
+    }
+    return result;
+}
