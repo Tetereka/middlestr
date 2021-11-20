@@ -1,9 +1,9 @@
 #include "middle_str.h"
 
 bool itc_isFirstInSecond(string s1, string s2){
-    if (s1 == "" || s2 == "") return false;
+    if (s1 == "") return true;
+    if (s2 == "") return false;
     for (int i=0; i < itc_len(s2); i++) {
-        cout << itc_slice_str(s2, i, i + itc_len(s1) - 1) << endl;
         if (itc_slice_str(s2, i, i + itc_len(s1) - 1) == s1) return true;
     }
     return false;
