@@ -23,6 +23,7 @@ int itc_countWords(string str){
 			if (!flag) c += 1;
 			flag = false;
 		}
+		if (str[i] == ' ' && str[i - 1] <= '258') flag = false;
 		else {
 			if (!(str[i] >= 'a' && str[i] <= 'z' || str[i] >= 'A' && str[i] <= 'Z')) flag = true;
 		}
