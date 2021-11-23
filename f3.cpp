@@ -44,33 +44,29 @@ string itc_rmFreeSpace(string str){
 }
 
 
-bool itc_isIp(string str){
-    int i = 0, c = 0, dotpos = 0, ip = 0, news = 0;
-    string num;
-    while (str[i] != '\0'){
+bool itc_isIp(string str) {
+    int i = 0, c = 0, dot = 0, len, ip = 0, that;
+    string chislo;
+    while (i <= itc_len(str) + 1){
+        cout << i << endl;
        if (str[i] == '.'){
-            num = itc_slice_str(str, dotpos, i - 1);
-            dotpos = i + 1;
+            chislo = itc_slice_str(str, dot, i - 1);
+            dot = i + 1;
             c += 1;
-            for (int i = 0; i < itc_len(num); i++){
-                if (!itc_isDigit(num[i])) return false;
-                ip += (num[i] - 48) * itc_pow(10, itc_len(num) - i - 1);
+            len = itc_len(chislo);
+            for (int i = 0; i < len; i++){
+                if (!itc_isDigit(chislo[i])) return false;
+                that = chislo[i] - 48;
+                ip += that * itc_pow(10, len - i - 1);
             }
             if (ip < 0 || ip > 255) return false;
             ip = 0;
        }
        i += 1;
     }
-    num = itc_slice_str(str, dotpos, i - 1);
-    dotpos = i + 1;
-    c += 1;
-    for (int i = 0; i < itc_len(num); i++){
-        if (itc_isDigit(num[i]) == false) return false;
-        ip += (num[i] - 48) * itc_pow(10, itc_len(num) - i - 1);
-    }
-    if (ip < 0 || ip > 255) return false;
-    if (c == 4) return true;
-    return false;
+            if (ip < 0 || ip > 255) return false;
+    if (c != 3) return false;
+    return true;
 }
 
 
