@@ -48,6 +48,7 @@ bool itc_isIp(string str) {
     int i = 0, c = 0, dot = 0, len, ip = 0, that;
     string chislo;
     while (i <= itc_len(str) + 1){
+        cout << i << endl;
        if (str[i] == '.'){
             chislo = itc_slice_str(str, dot, i - 1);
             dot = i + 1;

@@ -17,13 +17,11 @@ int itc_countWords(string str){
 	int dlina = itc_len(str);
 	bool flag = false;
 	int c = 0;
-
 	for (int i = 1; i < dlina; i++) {
 		if (str[i] == ' ' && (str[i - 1] >= 'a' && str[i - 1] <= 'z' || str[i - 1] >= 'A' && str[i - 1] <= 'Z')) {
 			if (!flag) c += 1;
 			flag = false;
 		}
-		if (str[i] == ' ' && str[i - 1] <= '258') flag = false;
 		else {
 			if (!(str[i] >= 'a' && str[i] <= 'z' || str[i] >= 'A' && str[i] <= 'Z')) flag = true;
 		}
